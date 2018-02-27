@@ -3,15 +3,15 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes }  from '@angular/router';
 
 import { LoginComponent } from './login/login.component';
-import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AdminComponent } from "./admin/admin.component"
 
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
   {
-    path: 'dashboard',
-    component: ManagerDashboardComponent,
+    path: 'admin',
+    component: AdminComponent,
   },
   { path: '**', component: NotFoundComponent }
 ];

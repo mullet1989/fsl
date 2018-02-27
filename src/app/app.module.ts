@@ -6,17 +6,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminModule } from './admin/admin.module';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     NotFoundComponent,
-    ManagerDashboardComponent
+    MenuComponent
   ],
   imports: [
     BrowserModule,
+    AdminModule,
     AppRoutingModule,
   ],
   providers: [],
