@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+  title: string = "this is the dashboard"
+  msg: string = "welcome to you"
+
   constructor() { }
 
   ngOnInit() {
