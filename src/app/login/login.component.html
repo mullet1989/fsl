@@ -1,4 +1,16 @@
-<p>
-  login works!
-  {{ _message }}
-</p>
+<form class="pure-form pure-form-aligned">
+  <fieldset>
+    <legend>Login</legend>
+    <div class="pure-control-group">
+      <label for="email" class="">Email:</label>
+      <input [(ngModel)]="e" class="pure-input-1-2" type="email" id="email" name="e" placeholder="" />
+      <span class="pure-form-message-inline">This is a required field.</span>
+    </div>
+
+    <div class="pure-control-group">
+      <label for="password" class="">Password:</label>
+      <input [(ngModel)]="p" class="pure-input-1-2" type="password" id="password" name="p" placeholder="" />
+      <span class="pure-form-message-inline">This is a required field.</span>
+    </div>
+  </fieldset>
+</form>

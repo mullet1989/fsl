@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
-  title = 'Welcome';
-  subtitle = "This is the best website now";
+  title = 'Fantasy Surrey League';
+  subtitle = "This is the home of the fantasy surrey league";
 }

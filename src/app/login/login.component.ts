@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  _message = "";
+  _message: string = "";
+  e: string;
+  p: string;
+
   constructor() {
     this._message = "hello world";
   }
