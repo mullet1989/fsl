@@ -12,7 +12,8 @@ export class MenuComponent implements OnInit {
   constructor() {
     this._menuItems = [
       { name: "Home", route: "/" },
-      { name: "Admin", route: "/admin" }
+      { name: "Admin", route: "/admin" },
+      { name: "Athletes", route: "/athlete" },
     ];
   }
 

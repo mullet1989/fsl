@@ -1,22 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes }  from '@angular/router';
-
-import { LoginComponent } from './login/login.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { AuthGuard } from './auth.guard';
+import { AthleteDetailComponent } from './athlete-detail/athlete-detail.component';
+import { NotFoundComponent } from '../not-found/not-found.component';
 
 
 const appRoutes: Routes = [
-  { path: '', component: LoginComponent },
   {
-    path: 'admin',
-    loadChildren: 'app/admin/admin.module#AdminModule',
-    canLoad: [AuthGuard]
-  },
-  {
-    path: 'athlete',
-    loadChildren: 'app/athlete/athlete.module#AthleteModule'
+    path: "/:id",
+    component: AthleteDetailComponent,
   },
   { path: '**', component: NotFoundComponent }
 ];
@@ -35,4 +27,4 @@ const appRoutes: Routes = [
   ],
   declarations: []
 })
-export class AppRoutingModule { }
+export class AthleteRoutingModule { }
