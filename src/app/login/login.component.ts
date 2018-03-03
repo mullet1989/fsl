@@ -18,12 +18,25 @@ export class LoginComponent implements OnInit {
     return this.email.invalid ? "need to correct this" : "";
   }
 
+  private _passwordValidationMessage: string = "";
+  get passwordValidationMessage(): string {
+    return this.password.invalid ? "your password sucks" : "";
+  }
+
+  options = [
+    'One',
+    'Two',
+    'Three'
+  ];
+
   constructor(private authService: AuthService) { }
 
   ngOnInit() { }
 
   login() {
-    //this.authService.login(this.email.value, this.password).subscribe(x => console.log(x.email));
+    this.authService.login(
+      this.email.value, this.password.value
+    ).subscribe(x => console.log(x.email));
   }
 
 }

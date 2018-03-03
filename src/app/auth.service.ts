@@ -35,7 +35,7 @@ export interface AuthPayload {
   token: string
 }
 
-class JSONWebToken implements AuthPayload {
+export class JSONWebToken implements AuthPayload {
   email: string;
   token: string;
 }
