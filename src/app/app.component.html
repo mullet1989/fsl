@@ -1,42 +1,19 @@
 <main flex>
-  <mat-sidenav-container [class.m2app-dark]="isDarkTheme">
-
-    <mat-sidenav #sidenav mode="over" position="start" class="app-sidenav" color="primary">
-      <mat-toolbar>
-        <mat-toolbar-row>
-          <span>Settings</span>
-          <span class="app-toolbar-filler"></span>
-          <mat-icon class="example-icon">build</mat-icon>
-        </mat-toolbar-row>
-
-        <mat-toolbar-row>
-          <span>Account</span>
-          <span class="app-toolbar-filler"></span>
-          <mat-icon class="example-icon">account_circle</mat-icon>
-        </mat-toolbar-row>
 
 
-      </mat-toolbar>
+  <mat-toolbar color="primary">
+    <app-menu></app-menu>
+    <span class="title">Fantasy Surrey League</span>
+  </mat-toolbar>
 
-    </mat-sidenav>
+  <div class="app-content">
 
-    <mat-toolbar color="primary">
-      <button mat-button class="app-menu-button" (click)="sidenav.toggle()">
-        <i class="material-icons">menu</i>
-      </button>
-      <span class="title">Angular Material Demo</span>
-    </mat-toolbar>
-
-    <div class="app-content">
-
-      <div class="content">
-        <router-outlet></router-outlet>
-      </div>
-
-      <app-footer></app-footer>
-
+    <div class="content">
+      <router-outlet></router-outlet>
     </div>
 
-  </mat-sidenav-container>
+    <app-footer></app-footer>
+
+  </div>
 
 </main>

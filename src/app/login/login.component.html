@@ -1,16 +1,18 @@
-<form>
+<div class="example-container">
   <mat-card>
-    <mat-form-field>
-      <input matInput placeholder="email" type="text" />
-    </mat-form-field>
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="Email" [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">{{emailValidationMessage}}</mat-error>
+      </mat-form-field>
+    </div>
 
-    <mat-form-field>
-      <input matInput placeholder="password" type="password" />
-    </mat-form-field>
-
-    <mat-card-content>
-      <button class="app-button" mat-raised-button color="primary">Login</button>
-    </mat-card-content>
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="Password" [formControl]="password" required>
+        <mat-error *ngIf="password.invalid">asdad</mat-error>
+      </mat-form-field>
+    </div>
 
   </mat-card>
-</form>
+</div>

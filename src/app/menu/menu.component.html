@@ -1,0 +1,20 @@
+<button mat-button [matMenuTriggerFor]="menu" class="app-menu-button">
+  <i class="material-icons">menu</i>
+</button>
+
+<mat-menu #menu="matMenu">
+  <a routerLink="/">
+    <button mat-menu-item>
+      <mat-icon>home</mat-icon>
+      Home
+    </button>
+  </a>
+
+  <a routerLink="/admin">
+    <button mat-menu-item>
+      <mat-icon>account_box</mat-icon>
+      Manage
+    </button>
+  </a>
+
+</mat-menu>
