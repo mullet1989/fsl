@@ -14,6 +14,7 @@ import { MenuComponent } from './menu/menu.component';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { FooterComponent } from './footer/footer.component';
+import { MockAuthService } from './mock.auth.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,10 @@ import { FooterComponent } from './footer/footer.component';
     MaterialDesignModule,
     BrowserAnimationsModule
   ],
-  providers: [AuthGuard, AuthService],
+  providers: [
+    { provide: AuthGuard, useClass: AuthGuard },
+    { provide: AuthService, useClass: MockAuthService }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
