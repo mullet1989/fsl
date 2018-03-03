@@ -13,13 +13,15 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { MenuComponent } from './menu/menu.component';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     NotFoundComponent,
-    MenuComponent
+    MenuComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

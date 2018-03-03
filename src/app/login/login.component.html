@@ -1,19 +1,16 @@
-<form class="pure-form pure-form-aligned">
-  <fieldset>
-    <legend>Login</legend>
-    <div class="pure-control-group">
-      <label for="email" class="">Email:</label>
-      <input [(ngModel)]="e" class="pure-input-1-2" type="email" id="email" name="e" placeholder="" />
-      <span class="pure-form-message-inline">This is a required field.</span>
-    </div>
+<form>
+  <mat-card>
+    <mat-form-field>
+      <input matInput placeholder="email" type="text" />
+    </mat-form-field>
 
-    <div class="pure-control-group">
-      <label for="password" class="">Password:</label>
-      <input [(ngModel)]="p" class="pure-input-1-2" type="password" id="password" name="p" placeholder="" />
-      <span class="pure-form-message-inline">This is a required field.</span>
-    </div>
+    <mat-form-field>
+      <input matInput placeholder="password" type="password" />
+    </mat-form-field>
 
-    <button (click)="login()" class="pure-button pure-button-primary">Login</button>
+    <mat-card-content>
+      <button class="app-button" mat-raised-button color="primary">Login</button>
+    </mat-card-content>
 
-  </fieldset>
+  </mat-card>
 </form>
