@@ -19,7 +19,7 @@
 
     <div>
       <mat-form-field>
-        <input matInput placeholder="Password" type="password" [formControl]="password" required>
+        <input matInput (keyup.enter)="login()" placeholder="Password" type="password" [formControl]="password" required>
         <mat-error *ngIf="password.invalid">{{passwordValidationMessage}}</mat-error>
       </mat-form-field>
     </div>

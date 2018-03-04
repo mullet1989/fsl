@@ -15,14 +15,14 @@ export abstract class AbstractSearchService<T extends IHasId> {
   }
 
   getAll(): Observable<T[]> {
-    return this._http.get(this._endpoint).map(resp => resp as T[]);
+    return this._http.get<T[]>(this._endpoint);
   }
   getOne(id: number): Observable<T> {
-    return this._http.get(`${this._endpoint}/{id}`).map(resp => resp as T);
+    return this._http.get<T>(`${this._endpoint}/{id}`);
   }
   searchAll(term: string): Observable<T[]> {
-    let query = `${this._endpoint}?q=${term}`;
-    return this._http.get(query).map(resp => resp as T[]);
+    let query = `${this._endpoint}?email=${term}`;
+    return this._http.get<T[]>(query);
   }
 
 

@@ -15,6 +15,8 @@ import { AuthGuard } from './auth.guard';
 import { AuthService } from './services/auth.service';
 import { FooterComponent } from './footer/footer.component';
 import { MockAuthService } from './services/mocks/mock.auth.service';
+import { InMemoryWebApiModule, InMemoryDbService } from 'angular-in-memory-web-api';
+import { InMemoryDataBase } from './services/mocks/inmemory.users';
 
 @NgModule({
   declarations: [
@@ -27,11 +29,14 @@ import { MockAuthService } from './services/mocks/mock.auth.service';
   imports: [
     BrowserModule,
     HttpClientModule,
+    InMemoryWebApiModule.forRoot(
+      InMemoryDataBase, { dataEncapsulation: false }
+    ),
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
     MaterialDesignModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [
     { provide: AuthGuard, useClass: AuthGuard },

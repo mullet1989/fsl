@@ -3,12 +3,12 @@ import { IHasId } from "./IHasId";
 export class User implements IHasId {
 
   constructor()
-  constructor(id: Number, name: string)
-  constructor(id?: Number, name?: string) {
+  constructor(id: Number, email: string)
+  constructor(id?: Number, email?: string) {
     this.ID = id;
-    this.name = name;
+    this.email = name;
   }
 
   ID: Number;
-  name: string = "";
+  email: string = "";
 }

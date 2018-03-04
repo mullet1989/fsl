@@ -9,7 +9,7 @@ import { MockUserSearchService } from '../services/mocks/mock.user.search.servic
   selector: 'app-login',
   providers: [
     { provide: MockUserSearchService, useClass: MockUserSearchService },
-    { provide: USER_SEARCH_TOKEN, useValue: "/user" }
+    { provide: USER_SEARCH_TOKEN, useValue: "api/users" }
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.less']
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
   search() {
     let emailaddress = this.email.value as string;
     this.userSearchService.searchAll(emailaddress)
-      .subscribe((results) => this.options = results.map((result) => result.name))
+      .subscribe((results) => this.options = results.map((result) => result.email))
   }
 
   ngOnInit() { }
