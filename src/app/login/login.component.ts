@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { FormControl, Validators } from '@angular/forms';
-import { UserSearchService } from '../services/user.search.service';
-import { SearchServiceEndpoint, UserSearchServiceEndpoint, AthleteSearchServiceEndpoint } from '../app.config';
-
+import { USER_SEARCH_TOKEN } from '../services/user.search.service';
+import { User } from '../models/user';
+import { MockUserSearchService } from '../services/mocks/mock.user.search.service';
 
 @Component({
   selector: 'app-login',
   providers: [
-    { provide: SearchServiceEndpoint, useValue: UserSearchServiceEndpoint },
-    { provide: UserSearchService, useClass: UserSearchService },
+    { provide: MockUserSearchService, useClass: MockUserSearchService },
+    { provide: USER_SEARCH_TOKEN, useValue: "/user" }
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.less']
@@ -17,7 +17,7 @@ import { SearchServiceEndpoint, UserSearchServiceEndpoint, AthleteSearchServiceE
 export class LoginComponent implements OnInit {
 
   constructor(private authService: AuthService,
-    private emailSearchService: UserSearchService) { }
+    private userSearchService: MockUserSearchService) { }
 
 
   password = new FormControl('', [Validators.required, Validators.pattern(/benjamin/i)]);
@@ -34,14 +34,10 @@ export class LoginComponent implements OnInit {
   }
 
   search() {
-
+    let emailaddress = this.email.value as string;
+    this.userSearchService.searchAll(emailaddress)
+      .subscribe((results) => console.log(results))
   }
-
-  options = [
-    'One',
-    'Two',
-    'Three'
-  ];
 
   ngOnInit() { }
 

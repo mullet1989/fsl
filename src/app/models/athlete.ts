@@ -1,9 +1,8 @@
-import { ISearchable } from "./isearchable";
+import { IHasId } from "./IHasId";
 
-export class Athlete implements ISearchable {
+export class Athlete implements IHasId {
+  ID: Number;
   athleteId: Number;
   firstname: string;
   lastname: string;
-
-  name: string;
 }
