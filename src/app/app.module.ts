@@ -12,9 +12,9 @@ import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MenuComponent } from './menu/menu.component';
 import { AuthGuard } from './auth.guard';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
 import { FooterComponent } from './footer/footer.component';
-import { MockAuthService } from './mock.auth.service';
+import { MockAuthService } from './services/mocks/mock.auth.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,7 @@ import { MockAuthService } from './mock.auth.service';
   ],
   providers: [
     { provide: AuthGuard, useClass: AuthGuard },
-    { provide: AuthService, useClass: MockAuthService }
+    { provide: AuthService, useClass: MockAuthService },
   ],
   bootstrap: [AppComponent]
 })

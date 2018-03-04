@@ -2,7 +2,7 @@
   <mat-card>
     <div>
       <mat-form-field>
-        <input matInput placeholder="Email" [formControl]="email" [matAutocomplete]="auto" required>
+        <input matInput placeholder="Email" (keyup)="search()" [formControl]="email" [matAutocomplete]="auto" required>
         <mat-error *ngIf="email.invalid">{{emailValidationMessage}}</mat-error>
 
         <!-- autocomplete email -->
