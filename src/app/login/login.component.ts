@@ -33,10 +33,12 @@ export class LoginComponent implements OnInit {
     return this.password.invalid ? "your password sucks" : "";
   }
 
+  public options: string[]
+
   search() {
     let emailaddress = this.email.value as string;
     this.userSearchService.searchAll(emailaddress)
-      .subscribe((results) => console.log(results))
+      .subscribe((results) => this.options = results.map((result) => result.name))
   }
 
   ngOnInit() { }
