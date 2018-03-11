@@ -17,6 +17,8 @@ import { FooterComponent } from './footer/footer.component';
 import { MockAuthService } from './services/mocks/mock.auth.service';
 import { InMemoryWebApiModule, InMemoryDbService } from 'angular-in-memory-web-api';
 import { InMemoryDataBase } from './services/mocks/inmemory.users';
+import { MockUserSearchService } from './services/mocks/mock.user.search.service';
+import { SEARCH_SERVICE_TOKEN } from './services/user.search.service';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import { InMemoryDataBase } from './services/mocks/inmemory.users';
   providers: [
     { provide: AuthGuard, useClass: AuthGuard },
     { provide: AuthService, useClass: MockAuthService },
+    { provide: SEARCH_SERVICE_TOKEN, useClass: MockUserSearchService },
   ],
   bootstrap: [AppComponent]
 })

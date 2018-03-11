@@ -8,11 +8,12 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/map';
 
+
 export abstract class AbstractSearchService<T extends IHasId> {
 
-  constructor(private _http: HttpClient, private _endpoint: string) {
-    console.log(_endpoint);
-  }
+  abstract _endpoint: string;
+
+  constructor(protected _http: HttpClient) { }
 
   getAll(): Observable<T[]> {
     return this._http.get<T[]>(this._endpoint);

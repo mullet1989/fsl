@@ -1,23 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, InjectionToken } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { FormControl, Validators } from '@angular/forms';
-import { USER_SEARCH_TOKEN } from '../services/user.search.service';
 import { User } from '../models/user';
 import { MockUserSearchService } from '../services/mocks/mock.user.search.service';
+import { AbstractSearchService } from '../services/abstract.search.service';
+import { IHasId } from '../models/IHasId';
+import { UserSearchService, SEARCH_SERVICE_TOKEN } from '../services/user.search.service';
 
 @Component({
   selector: 'app-login',
-  providers: [
-    { provide: MockUserSearchService, useClass: MockUserSearchService },
-    { provide: USER_SEARCH_TOKEN, useValue: "api/users" }
-  ],
   templateUrl: './login.component.html',
+  providers: [
+    { provide: SEARCH_SERVICE_TOKEN, useClass: MockUserSearchService }
+  ],
   styleUrls: ['./login.component.less']
 })
 export class LoginComponent implements OnInit {
 
+  private userSearchService;
+
   constructor(private authService: AuthService,
-    private userSearchService: MockUserSearchService) { }
+    @Inject(SEARCH_SERVICE_TOKEN) userSearchService: UserSearchService) {
+    this.userSearchService = userSearchService;
+    console.log(userSearchService._endpoint)
+  }
 
 
   password = new FormControl('', [Validators.required, Validators.pattern(/benjamin/i)]);

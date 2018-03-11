@@ -11,14 +11,14 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
-import { AuthService } from "./services/auth.service"
+import { MockAuthService } from "./services/mocks/mock.auth.service"
 
 
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
 
   constructor(
-    private authService: AuthService,
+    private authService: MockAuthService,
     private router: Router
   ) { }
 
