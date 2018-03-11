@@ -1,9 +1,10 @@
 import { NgModule } from "@angular/core"
-import { RouterModule, Routes }  from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from "../auth.guard";
 
-import { AdminComponent } from "./admin.component"
-import { DashboardComponent } from "./dashboard/dashboard.component"
-import { AuthGuard } from "../auth.guard"
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { LoginComponent } from "./components/login/login.component";
+import { AdminComponent } from "./components/admin.component";
 
 const adminRoutes: Routes = [
   {
@@ -12,9 +13,11 @@ const adminRoutes: Routes = [
     children: [
       {
         path: '',
+        component: AdminComponent,
         canActivateChild: [AuthGuard],
         children: [
           { path: 'dashboard', component: DashboardComponent },
+          { path: 'login', component: LoginComponent },
         ]
       }
     ]
@@ -29,4 +32,4 @@ const adminRoutes: Routes = [
     RouterModule
   ]
 })
-export class AdminRoutingModule {}
+export class AdminRoutingModule { }

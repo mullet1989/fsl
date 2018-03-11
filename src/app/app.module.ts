@@ -7,26 +7,27 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialDesignModule } from "./material-design.module"
 
 // components
-import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { MenuComponent } from './menu/menu.component';
-import { AuthGuard } from './auth.guard';
-import { AuthService } from './services/auth.service';
-import { FooterComponent } from './footer/footer.component';
-import { MockAuthService } from './services/mocks/mock.auth.service';
 import { InMemoryWebApiModule, InMemoryDbService } from 'angular-in-memory-web-api';
-import { InMemoryDataBase } from './services/mocks/inmemory.users';
-import { MockUserSearchService } from './services/mocks/mock.user.search.service';
-import { SEARCH_SERVICE_TOKEN } from './services/user.search.service';
+import { AppComponent } from './components/app.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoaderComponent } from './components/loader/loader.component';
+import { InMemoryDataBase } from './admin/services/mocks/inmemory.users';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     NotFoundComponent,
     MenuComponent,
-    FooterComponent
+    FooterComponent,
+    SidebarComponent,
+    NavbarComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -38,13 +39,9 @@ import { SEARCH_SERVICE_TOKEN } from './services/user.search.service';
     ReactiveFormsModule,
     AppRoutingModule,
     MaterialDesignModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule
   ],
-  providers: [
-    { provide: AuthGuard, useClass: AuthGuard },
-    { provide: AuthService, useClass: MockAuthService },
-    { provide: SEARCH_SERVICE_TOKEN, useClass: MockUserSearchService },
-  ],
+  providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

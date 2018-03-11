@@ -1,27 +1,24 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { AdminComponent } from './admin.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { AdminRoutingModule } from './admin.routing-module';
-import { MaterialDesignModule } from '../material-design.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { MockUserSearchService } from '../services/mocks/mock.user.search.service';
-import { AuthService } from '../services/auth.service';
-import { MockAuthService } from '../services/mocks/mock.auth.service';
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MaterialDesignModule } from "../material-design.module";
+import { RouterModule } from "@angular/router";
+import { AdminComponent } from "./components/admin.component";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { AdminRoutingModule } from "./admin.routing-module";
+import { LoginComponent } from "./components/login/login.component";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     MaterialDesignModule,
-    RouterModule
-  ],
-  providers: [
-    { provide: AuthService, useClass: MockAuthService }
+    AdminRoutingModule
   ],
   declarations: [
     AdminComponent,
+    LoginComponent,
     DashboardComponent,
   ]
 })
