@@ -18,6 +18,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { InMemoryDataBase } from './admin/services/mocks/inmemory.users';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
+import { UserSearchService } from './admin/services/search/user.search.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { AuthGuard } from './auth.guard';
     MaterialDesignModule,
     BrowserAnimationsModule
   ],
-  providers: [AuthGuard, AuthService],
+  providers: [AuthGuard, AuthService, UserSearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

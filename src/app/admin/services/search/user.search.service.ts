@@ -1,7 +1,7 @@
 import { Injectable, Inject, InjectionToken } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { User } from "../../models/user";
-import { AbstractSearchService } from "./search/abstract.search.service";
+import { AbstractSearchService } from "./abstract.search.service";
+import { User } from "../../../models/user";
 
 export const SEARCH_SERVICE_TOKEN = new InjectionToken<string>("search-service");
 

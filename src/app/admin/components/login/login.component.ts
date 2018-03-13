@@ -1,7 +1,8 @@
 import { Component, OnInit, Inject, InjectionToken } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { SEARCH_SERVICE_TOKEN, UserSearchService } from '../../services/user.search.service';
 import { AuthService } from '../../../auth.service';
+import { SEARCH_SERVICE_TOKEN, UserSearchService } from '../../services/search/user.search.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-login',
@@ -35,20 +36,32 @@ export class LoginComponent implements OnInit {
     return this.password.invalid ? "your password sucks" : "";
   }
 
-  public options: string[]
+  public options: string[] = [""];
 
   search() {
-    let emailaddress = this.email.value as string;
+    let emailaddress: string = this.email.value;
     this.userSearchService.searchAll(emailaddress)
-      .subscribe((results) => this.options = results.map((result) => result.email))
+      .subscribe((results) => {
+        var emailAddresses: string[] = results.map((result) => result.email);
+        this.options = emailAddresses ? emailAddresses : [];
+      })
   }
 
   ngOnInit() { }
 
   login() {
-    this.authService.login(
-      this.email.value, this.password.value
-    ).subscribe(x => console.log(x.email));
+    try {
+      let emailValue: string = this.email.value;
+      let passwordValue: string = this.password.value;
+      this.authService.login(emailValue, passwordValue)
+        .subscribe((payload) => {
+          if (payload) {
+            console.log("you logged in ");
+          }
+        })
+    } catch (error) {
+      console.log(error);
+    }
   }
 
 }

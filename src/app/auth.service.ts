@@ -2,18 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/delay';
+import { of } from "rxjs/observable/of";
+import { map } from "rxjs/operators"
 import { User } from './models/user';
+import { UserSearchService } from './admin/services/search/user.search.service';
 
 @Injectable()
 export class AuthService {
 
-
   apiUrl: string = "api/users"
 
-  constructor(protected http: HttpClient) {
+  constructor(
+    protected http: HttpClient,
+    protected userSearchService: UserSearchService) {
 
   }
 
@@ -25,16 +26,20 @@ export class AuthService {
   login(email: string, password: string): Observable<AuthPayload> {
     let jwt: JSONWebToken = { email: email, token: "token" };
     this.redirectUrl = "/admin/dashboard"
-    let searchUrl: string = `${this.apiUrl}?email=${email}`
+    email = encodeURIComponent(email);
 
-    // transform into observable<JsonWebToken>
-    return this.http.get<User[]>(searchUrl)
-      .map((users) => {
-        let user = users.find((u, i) => u.email === email);
-        let payload = new JSONWebToken();
-        payload.email = user.email;
-        return payload;
-      });
+    // transform into Observable<JsonWebToken>
+    return this.userSearchService.searchAll(email)
+      .pipe(
+        map((u, i) => {
+          let user = u.find((u, i) => u.email === email);
+          if (!user) {
+            return new JSONWebToken();
+          }
+          let payload = new JSONWebToken();
+          payload.email = user.email;
+          return payload;
+        }));
   }
 
   logout(): void {
@@ -51,4 +56,9 @@ export interface AuthPayload {
 export class JSONWebToken implements AuthPayload {
   email: string;
   token: string;
+
+  constructor();
+  constructor(email?: string, token?: string) {
+
+  }
 }

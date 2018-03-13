@@ -9,7 +9,7 @@ const appRoutes: Routes = [
   {
     path: 'admin',
     loadChildren: 'app/admin/admin.module#AdminModule',
-    //canLoad: [AuthGuard]
+    canLoad: [AuthGuard]
   },
   {
     path: 'athlete',
