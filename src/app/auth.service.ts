@@ -28,18 +28,8 @@ export class AuthService {
     this.redirectUrl = "/admin/dashboard"
     email = encodeURIComponent(email);
 
-    // transform into Observable<JsonWebToken>
-    return this.userSearchService.searchAll(email)
-      .pipe(
-        map((u, i) => {
-          let user = u.find((u, i) => u.email === email);
-          if (!user) {
-            return new JSONWebToken();
-          }
-          let payload = new JSONWebToken();
-          payload.email = user.email;
-          return payload;
-        }));
+    return Observable.of<JSONWebToken>(new JSONWebToken());
+
   }
 
   logout(): void {

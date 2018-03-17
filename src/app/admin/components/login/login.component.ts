@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, InjectionToken } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { AuthService } from '../../../auth.service';
 import { SEARCH_SERVICE_TOKEN, UserSearchService } from '../../services/search/user.search.service';
 import { Observable } from 'rxjs/Observable';
@@ -15,6 +15,7 @@ import { Observable } from 'rxjs/Observable';
 export class LoginComponent implements OnInit {
 
   private userSearchService;
+  model = new LoginModel();
 
   constructor(private authService: AuthService,
     @Inject(SEARCH_SERVICE_TOKEN) userSearchService: UserSearchService) {
@@ -22,24 +23,10 @@ export class LoginComponent implements OnInit {
     console.log(userSearchService._endpoint)
   }
 
-
-  password = new FormControl('', [Validators.required, Validators.pattern(/benjamin/i)]);
-  email = new FormControl('', [Validators.required, Validators.email]);
-
-  private _emailValidationMessage: string = "";
-  get emailValidationMessage(): string {
-    return this.email.invalid ? "need to correct this" : "";
-  }
-
-  private _passwordValidationMessage: string = "";
-  get passwordValidationMessage(): string {
-    return this.password.invalid ? "your password sucks" : "";
-  }
-
   public options: string[] = [""];
 
   search() {
-    let emailaddress: string = this.email.value;
+    let emailaddress: string = this.model.email;
     this.userSearchService.searchAll(emailaddress)
       .subscribe((results) => {
         var emailAddresses: string[] = results.map((result) => result.email);
@@ -51,8 +38,8 @@ export class LoginComponent implements OnInit {
 
   login() {
     try {
-      let emailValue: string = this.email.value;
-      let passwordValue: string = this.password.value;
+      let emailValue: string = this.model.email;
+      let passwordValue: string = this.model.password;
       this.authService.login(emailValue, passwordValue)
         .subscribe((payload) => {
           if (payload) {
@@ -64,4 +51,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
+}
+
+class LoginModel {
+  email: string;
+  password: string;
 }

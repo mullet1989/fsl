@@ -7,6 +7,7 @@ import { AdminComponent } from "./components/admin.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { AdminRoutingModule } from "./admin.routing-module";
 import { LoginComponent } from "./components/login/login.component";
+import { EmailAlreadyInUseValidatorDirective } from "./components/login/login.email-not-used.validator";
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { LoginComponent } from "./components/login/login.component";
     AdminComponent,
     LoginComponent,
     DashboardComponent,
+    EmailAlreadyInUseValidatorDirective
   ]
 })
 export class AdminModule { }
