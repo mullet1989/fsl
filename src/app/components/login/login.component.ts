@@ -1,8 +1,9 @@
 import { Component, OnInit, Inject, InjectionToken } from '@angular/core';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
-import { AuthService } from '../../../auth.service';
-import { SEARCH_SERVICE_TOKEN, UserSearchService } from '../../services/search/user.search.service';
+import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
+import { SEARCH_SERVICE_TOKEN, UserSearchService } from '../../admin/services/search/user.search.service';
+import { AuthService } from '../../auth.service';
+import { LoginRegisterModel } from '../../models/LoginRegisterModel';
 
 @Component({
   selector: 'app-login',
@@ -15,12 +16,12 @@ import { Observable } from 'rxjs/Observable';
 export class LoginComponent implements OnInit {
 
   private userSearchService;
-  model = new LoginModel();
+  model = new LoginRegisterModel();
 
-  constructor(private authService: AuthService,
+  constructor(
+    private authService: AuthService,
     @Inject(SEARCH_SERVICE_TOKEN) userSearchService: UserSearchService) {
     this.userSearchService = userSearchService;
-    console.log(userSearchService._endpoint)
   }
 
   public options: string[] = [""];
@@ -36,6 +37,11 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() { }
 
+  /**
+   * Logs into the website
+   *
+   * @memberof LoginComponent
+   */
   login() {
     try {
       let emailValue: string = this.model.email;
@@ -44,6 +50,8 @@ export class LoginComponent implements OnInit {
         .subscribe((payload) => {
           if (payload) {
             console.log("you logged in ");
+          } else {
+            console.log("not authenticated")
           }
         })
     } catch (error) {
@@ -51,9 +59,4 @@ export class LoginComponent implements OnInit {
     }
   }
 
-}
-
-class LoginModel {
-  email: string;
-  password: string;
 }

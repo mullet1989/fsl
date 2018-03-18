@@ -7,14 +7,13 @@ import { map } from "rxjs/operators"
 import { User } from './models/user';
 import { UserSearchService } from './admin/services/search/user.search.service';
 
-@Injectable()
-export class AuthService {
+export abstract class AuthService {
 
   apiUrl: string = "api/users"
 
   constructor(
-    protected http: HttpClient,
-    protected userSearchService: UserSearchService) {
+    protected _http: HttpClient,
+    protected _userSearchService: UserSearchService) {
 
   }
 
@@ -23,13 +22,19 @@ export class AuthService {
   // store the URL so we can redirect after logging in
   redirectUrl: string;
 
+  /**
+   * This handles the log into the website
+   *
+   * @param {string} email
+   * @param {string} password
+   * @returns {Observable<AuthPayload>} Authentication Payload
+   * @memberof AuthService
+   */
   login(email: string, password: string): Observable<AuthPayload> {
     let jwt: JSONWebToken = { email: email, token: "token" };
     this.redirectUrl = "/admin/dashboard"
     email = encodeURIComponent(email);
-
-    return Observable.of<JSONWebToken>(new JSONWebToken());
-
+    return this._http.post<JSONWebToken>("/login", jwt);
   }
 
   logout(): void {

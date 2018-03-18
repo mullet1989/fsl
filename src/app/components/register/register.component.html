@@ -1,0 +1,38 @@
+<form (ngSubmit)="login()" #loginForm="ngForm">
+  <mat-card>
+    <div>
+      <mat-form-field>
+        <input id="email" name="email" [(ngModel)]="model.email" matInput placeholder="Email" required appEmailAlreadyInUse #emailModel="ngModel">
+        <mat-error *ngIf="emailModel.invalid">
+          <div *ngIf="emailModel.errors.required">
+            Email is required.
+          </div>
+          <div *ngIf="emailModel.errors.emailAlreadyInUse">
+            In use mate!
+          </div>
+        </mat-error>
+
+      </mat-form-field>
+    </div>
+
+
+    <div>
+      <mat-form-field>
+        <input id="password" name="password" matInput (keyup.enter)="login()" [(ngModel)]="model.password" placeholder="Password"
+          type="password" required #passwordModel="ngModel">
+
+        <mat-error *ngIf="passwordModel.invalid">
+          <div *ngIf="passwordModel.errors.required">
+            Password is required.
+          </div>
+        </mat-error>
+
+      </mat-form-field>
+    </div>
+
+    <div>
+      <button [disabled]="passwordModel.invalid || emailModel.invalid" mat-raised-button type="submit">Submit</button>
+    </div>
+
+  </mat-card>
+</form>

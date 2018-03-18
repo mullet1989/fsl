@@ -19,7 +19,7 @@ export class UserSearchService extends AbstractSearchService<User>
     let url = `${this._endpoint}?email=^${encodeURIComponent(email)}$`;
     return this._http.get<User[]>(url)
       .pipe(
-        tap((req) => console.log(req)),
+        //tap((req) => console.log(req)),
         catchError(this.handleError('GetByEmail', []))
       )
   }

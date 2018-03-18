@@ -1,8 +1,8 @@
 import { Input, Directive } from "@angular/core";
 import { NG_ASYNC_VALIDATORS, Validator, AbstractControl, ValidatorFn, ValidationErrors, AsyncValidatorFn, AsyncValidator } from "@angular/forms";
-import { UserSearchService } from "../../services/search/user.search.service";
 import { Observable } from "rxjs";
 import 'rxjs/add/operator/map';
+import { UserSearchService } from "../../admin/services/search/user.search.service";
 
 
 @Directive({
