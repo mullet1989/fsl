@@ -20,8 +20,8 @@ import { MockAuthService } from './admin/services/mocks/mock.auth.service';
 import { LoginComponent } from './components/login/login.component';
 import { AppComponent } from './components/app/app.component';
 import { HomeComponent } from './components/home/home.component';
-import { EmailAlreadyInUseValidatorDirective } from './components/login/login.email-not-used.validator';
 import { RegisterComponent } from './components/register/register.component';
+import { EmailAlreadyInUseValidatorDirective } from './components/register/register.email-not-used.validator';
 
 @NgModule({
   declarations: [
