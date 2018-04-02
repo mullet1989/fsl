@@ -26,6 +26,10 @@ export class LoginComponent implements OnInit {
 
   public options: string[] = [""];
 
+  get isLoggedIn() {
+    return this.authService.isLoggedIn
+  }
+
   search() {
     let emailaddress: string = this.model.email;
     this.userSearchService.searchAll(emailaddress)

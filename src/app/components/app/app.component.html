@@ -1,13 +1,22 @@
-<div class="wrapper">
-  <div class="sidebar" data-color='red' data-image="">
-    <app-sidebar></app-sidebar>
-    <div class="sidebar-background" style="background-image: url(../assets/img/sidebar-4.jpg)"></div>
-  </div>
-  <div class="main-panel">
-    <app-navbar></app-navbar>
-    <div class="main-content">
-      <router-outlet></router-outlet>
-    </div>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side">
+    <mat-list role="list">
+      <mat-list-item role="listitem">Item 1</mat-list-item>
+      <mat-list-item role="listitem">Item 2</mat-list-item>
+      <mat-list-item role="listitem">Item 3</mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <button mat-button (click)="sidenav.toggle()">Menu</button>
+      <span>F.S.L</span>
+    </mat-toolbar>
+    <!-- router-outlet -->
+    <router-outlet></router-outlet>
+
     <app-footer></app-footer>
-  </div>
-</div>
+  </mat-sidenav-content>
+
+
+</mat-sidenav-container>

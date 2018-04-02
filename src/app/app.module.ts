@@ -11,8 +11,6 @@ import { InMemoryWebApiModule, InMemoryDbService } from 'angular-in-memory-web-a
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { InMemoryDataBase } from './admin/services/mocks/inmemory.users';
 import { AuthService } from './auth.service';
@@ -31,8 +29,6 @@ import { RegisterComponent } from './components/register/register.component';
     NotFoundComponent,
     MenuComponent,
     FooterComponent,
-    SidebarComponent,
-    NavbarComponent,
     LoaderComponent,
     LoginComponent,
     RegisterComponent,
